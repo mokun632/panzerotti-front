@@ -1,12 +1,43 @@
-import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/Layout";
+import Card from "../components/LV2/Card";
 import pizza from "../public/image/friedpizza.jpeg";
 
+interface CardProps {
+  title: string;
+  introduction: string;
+  image: StaticImageData;
+  buttonTitle: string;
+}
+
+const cardInfo: CardProps = {
+  title: "マルゲリータ",
+  introduction: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  image: pizza,
+  buttonTitle: "カードに入れる",
+};
+
+const cardInfoArray: [CardProps] = [
+  cardInfo,
+  cardInfo,
+  cardInfo,
+  cardInfo,
+  cardInfo,
+  cardInfo,
+  cardInfo,
+  cardInfo,
+];
+
 export default function Home() {
+  const sliceByNumber = (array: [CardProps], number: number) => {
+    const length = Math.ceil(array.length / number);
+    return new Array(length)
+      .fill()
+      .map((_, i) => array.slice(i * number, (i + 1) * number));
+  };
+
   return (
     <Layout>
-      <div className="w-full relative">
+      <div className="w-full relative shadow-md">
         <img
           className="object-cover w-full h-screen md:h-96"
           src="image/friedpizza.jpeg"
@@ -23,166 +54,15 @@ export default function Home() {
       <div className="mt-14 text-gray-600 font-semibold font-sans text-lg md:text-xl">
         商品一覧
       </div>
-      <div className="md:flex justify-between mt-10">
-        <div className="bg-white shadow p-3 rounded lg:w-64 m-5 md:m-14">
-          <div className="my-6">
-            <p className="text-lg text-bold tracking-wide text-gray-600 mb-2">
-              マルゲリータ
-            </p>
-            <p className="text-sm text-gray-600 font-hairline">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
+      {sliceByNumber(cardInfoArray, 4).map((v) => {
+        return (
+          <div className="md:flex justify-between mt-10">
+            {v.map((v) => {
+              return <Card {...v} />;
+            })}
           </div>
-          <div>
-            <div className="relative bg-cover bg-center bg-gray-300 h-32">
-              <Image
-                src={pizza}
-                className="rounded"
-                layout="fill"
-                objectFit="cover"
-                alt="topic"
-              />
-            </div>
-          </div>
-          <div className="mt-6">
-            <button className="rounded shadow-md flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-              カートに入れる
-            </button>
-          </div>
-        </div>
-        <div className="bg-white shadow p-3 rounded lg:w-64 m-5 md:m-14">
-          <div className="my-6">
-            <p className="text-lg text-bold tracking-wide text-gray-600 mb-2">
-              シーフード
-            </p>
-            <p className="text-sm text-gray-600 font-hairline">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-          </div>
-          <div>
-            <div className="relative bg-cover bg-center bg-gray-300 h-32">
-              <Image
-                src={pizza}
-                className="rounded"
-                layout="fill"
-                objectFit="cover"
-                alt="topic"
-              />
-            </div>
-          </div>
-          <div className="mt-6">
-            <button className="rounded shadow-md flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-              カートに入れる
-            </button>
-          </div>
-        </div>
-        <div className="bg-white shadow p-3 rounded lg:w-64 m-5 md:m-14">
-          <div className="my-6">
-            <p className="text-lg text-bold tracking-wide text-gray-600 mb-2">
-              Title
-            </p>
-            <p className="text-sm text-gray-600 font-hairline">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-          </div>
-          <div>
-            <div className="relative bg-cover bg-center bg-gray-300 h-32">
-              <Image
-                src={pizza}
-                className="rounded"
-                layout="fill"
-                objectFit="cover"
-                alt="topic"
-              />
-            </div>
-          </div>
-          <div className="mt-6">
-            <button className="rounded shadow-md flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-              カートに入れる
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="md:flex justify-between mb-10">
-        <div className="bg-white shadow p-3 rounded lg:w-64 m-5 md:m-14">
-          <div className="my-6">
-            <p className="text-lg text-bold tracking-wide text-gray-600 mb-2">
-              マルゲリータ
-            </p>
-            <p className="text-sm text-gray-600 font-hairline">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-          </div>
-          <div>
-            <div className="relative bg-cover bg-center bg-gray-300 h-32">
-              <Image
-                src={pizza}
-                className="rounded"
-                layout="fill"
-                objectFit="cover"
-                alt="topic"
-              />
-            </div>
-          </div>
-          <div className="mt-6">
-            <button className="rounded shadow-md flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-              カートに入れる
-            </button>
-          </div>
-        </div>
-        <div className="bg-white shadow p-3 rounded lg:w-64 m-5 md:m-14">
-          <div className="my-6">
-            <p className="text-lg text-bold tracking-wide text-gray-600 mb-2">
-              シーフード
-            </p>
-            <p className="text-sm text-gray-600 font-hairline">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-          </div>
-          <div>
-            <div className="relative bg-cover bg-center bg-gray-300 h-32">
-              <Image
-                src={pizza}
-                className="rounded"
-                layout="fill"
-                objectFit="cover"
-                alt="topic"
-              />
-            </div>
-          </div>
-          <div className="mt-6">
-            <button className="rounded shadow-md flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-              カートに入れる
-            </button>
-          </div>
-        </div>
-        <div className="bg-white shadow p-3 rounded lg:w-64 m-5 md:m-14">
-          <div className="my-6">
-            <p className="text-lg text-bold tracking-wide text-gray-600 mb-2">
-              Title
-            </p>
-            <p className="text-sm text-gray-600 font-hairline">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-          </div>
-          <div>
-            <div className="relative bg-cover bg-center bg-gray-300 h-32">
-              <Image
-                src={pizza}
-                className="rounded"
-                layout="fill"
-                objectFit="cover"
-                alt="topic"
-              />
-            </div>
-          </div>
-          <div className="mt-6">
-            <button className="rounded shadow-md flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-              カートに入れる
-            </button>
-          </div>
-        </div>
-      </div>
+        );
+      })}
     </Layout>
   );
 }

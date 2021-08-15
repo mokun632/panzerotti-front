@@ -6,12 +6,12 @@ export const Header = () => {
   return (
     <header className="absolute z-10 w-full">
       <nav className="flex items-center justify-between px-2 py-3">
-        <a className="uppercase text-white font-bold font-mono ml-2 tracking-wide text-xl md:text-5xl" href="#pablo">
+        <a className="uppercase text-white font-bold font-mono ml-2 tracking-wide text-3xl md:text-5xl" href="#pablo">
           panzerotti
         </a>
-        <div className="ml-auto md:mr-40 flex">
-          <a className="mx-5" href="#cart">
-            <FaCartArrowDown color="white" size="28" />
+        <div className="ml-auto md:mr-10 flex">
+          <a className="mx-5 text-3xl md:text-5xl" href="#cart">
+            <FaCartArrowDown color="white"/>
           </a>
         </div>
       </nav>
