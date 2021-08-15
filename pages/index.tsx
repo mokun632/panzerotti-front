@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import Card from "../components/LV2/Card";
+import { sliceByNumber } from "../helper/Array";
 import pizza from "../public/image/friedpizza.jpeg";
 
 interface CardProps {
@@ -28,13 +29,6 @@ const cardInfoArray: [CardProps] = [
 ];
 
 export default function Home() {
-  const sliceByNumber = (array: [CardProps], number: number) => {
-    const length = Math.ceil(array.length / number);
-    return new Array(length)
-      .fill()
-      .map((_, i) => array.slice(i * number, (i + 1) * number));
-  };
-
   return (
     <Layout>
       <div className="w-full relative shadow-md">
@@ -56,7 +50,7 @@ export default function Home() {
       </div>
       {sliceByNumber(cardInfoArray, 4).map((v) => {
         return (
-          <div className="md:flex justify-between mt-10">
+          <div className="md:flex justify-between my-8">
             {v.map((v) => {
               return <Card {...v} />;
             })}

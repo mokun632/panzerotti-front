@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Button from "../LV1/Button";
-import pizza from "../../public/image/friedpizza.jpeg";
 
 type Props = {
   title: string;
@@ -9,16 +8,22 @@ type Props = {
   buttonTitle: string;
 };
 
-const Card: React.VFC<Props> = ({title, introduction, image, buttonTitle}) => {
+const Card: React.VFC<Props> = ({
+  title,
+  introduction,
+  image,
+  buttonTitle,
+}) => {
   return (
     <div className="bg-white shadow p-3 rounded lg:w-64 m-5 md:m-18">
       <div className="my-6">
         <p className="text-lg text-bold tracking-wide text-gray-600 mb-2">
           {title}
         </p>
-        <p className="text-sm text-gray-600 font-hairline">
-          {introduction}
-        </p>
+        <p className="text-sm text-gray-600 font-hairline">{introduction}</p>
+        <a href="#ditail">
+          <div className="text-blue-500">...more</div>
+        </a>
       </div>
       <div>
         <a href="#ditail">
